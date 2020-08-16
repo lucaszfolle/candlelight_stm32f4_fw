@@ -134,8 +134,9 @@ bool can_set_bittiming(can_data_t *hcan, uint16_t brp, uint8_t phase_seg1, uint8
 	  && (phase_seg2>0) && (phase_seg2<=8)
 	  && (sjw>0) && (sjw<=4)
 	) {
+// TODO: ajustar no sw ou algum outro lugar para diferentes bitrates
 		hcan->brp = brp & 0x3FF;
-		hcan->phase_seg1 = phase_seg1;
+		hcan->phase_seg1 = phase_seg1 - 2;
 		hcan->phase_seg2 = phase_seg2;
 		hcan->sjw = sjw;
 		return true;
